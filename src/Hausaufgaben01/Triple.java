@@ -22,11 +22,10 @@ public class Triple {
         ArrayList<Triple> list = new ArrayList<>();
         for(int i=0; i<n-3; i++){
             for(int j=i+1; j<n-2; j++){
-                for(int k=j+1; k<n-1; k++){
-                    if((i + j + k) == n) {
-                        if ((i * i + j * j) == k * k) {
-                            list.add(new Triple(i,j,k));
-                        }
+                int k = n - i - j;
+                if(k != j) {
+                    if ((i * i + j * j) == k * k) {
+                        list.add(new Triple(i, j, k));
                     }
                 }
             }

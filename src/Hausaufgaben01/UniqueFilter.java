@@ -1,6 +1,7 @@
 package src.Hausaufgaben01;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Tom on 04.04.2017.
@@ -8,16 +9,12 @@ import java.util.ArrayList;
 public class UniqueFilter implements Filter{
     @Override
     public int[] filter(int[] list) {
-        ArrayList<Integer> filtered = new ArrayList<>();
+        List<Integer> filtered = new ArrayList<>();
         for (int number : list) {
-            if (filtered.indexOf(number) == -1){
+            if (filtered.indexOf(number) == -1) {
                 filtered.add(number);
             }
         }
-        int[] filteredFinal = new int[filtered.size()];
-        for(int i=0; i<filtered.size(); i++) {
-            filteredFinal[i] = filtered.get(i);
-        }
-        return filteredFinal;
+        return  filtered.stream().mapToInt(i->i).toArray();
     }
 }

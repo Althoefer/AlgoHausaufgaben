@@ -1,30 +1,27 @@
 package src.Hausaufgaben01;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Tom on 04.04.2017.
  */
 public class PrimeFilter implements Filter{
     @Override
     public int[] filter(int[] list) {
-        int[] filtered = new int[list.length];
-        int primesFound = 0;
+        List<Integer> filtered = new ArrayList<>();
         for (int number : list){
             if(isPrime(number)){
-                filtered[primesFound] = number;
-                primesFound++;
+                filtered.add(number);
             }
         }
-        int[] filteredFinal = new int[primesFound];
-        System.arraycopy(filtered, 0, filteredFinal, 0, primesFound);
-        return filteredFinal;
+        return  filtered.stream().mapToInt(i->i).toArray();
     }
 
     private static boolean isPrime(int number){
-        for(int i=1; i<=(number+1)/2; i++){
-            for(int j=1; j<=i; j++) {
-                if (j * i == number) {
-                    return false;
-                }
+        for(int i=2; i< Math.sqrt(number); i++){
+            if (number % i == 0){
+                return false;
             }
         }
         return true;
