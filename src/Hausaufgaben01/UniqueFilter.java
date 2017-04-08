@@ -1,20 +1,11 @@
-package src.Hausaufgaben01;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 
 /**
  * Created by Tom on 04.04.2017.
  */
-public class UniqueFilter implements Filter{
-    @Override
-    public int[] filter(int[] list) {
-        List<Integer> filtered = new ArrayList<>();
-        for (int number : list) {
-            if (filtered.indexOf(number) == -1) {
-                filtered.add(number);
-            }
-        }
-        return  filtered.stream().mapToInt(i->i).toArray();
-    }
+public class UniqueFilter implements Filter {
+	@Override
+	public int[] filter(int[] list) {
+		return Arrays.stream(list).distinct().toArray();
+	}
 }
