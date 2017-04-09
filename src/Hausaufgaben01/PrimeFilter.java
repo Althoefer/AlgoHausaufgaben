@@ -3,12 +3,16 @@ import java.util.stream.IntStream;
 
 /**
  * Created by Tom on 04.04.2017.
+ * 
+ * PrimeFilter only lets prime numbers through
  */
 public class PrimeFilter implements Filter {
 	/**
-	 * Returns the given list with only the prime numbers left in it
-	 * @param list is the list, that has to be filtered
-	 * @return the filtered list
+	 * Filter out all non prime numbers from the given list
+	 * 
+	 * @param list
+	 *            is the list, that has to be filtered
+	 * @return the filtered list with only prime numbers
 	 */
 	@Override
 	public int[] filter(int[] list) {

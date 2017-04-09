@@ -2,12 +2,16 @@ import java.util.Arrays;
 
 /**
  * Created by Tom on 04.04.2017.
+ * 
+ * TwoDigitsFilter only lets two digit numbers through
  */
 public class TwoDigitsFilter implements Filter {
 	/**
-	 * Returns the given list with only the numbers with two digits left in it
-	 * @param list is the list, that has to be filtered
-	 * @return the filtered list
+	 * Filter out all non two digit numbers from the given list
+	 * 
+	 * @param list
+	 *            is the list, that has to be filtered
+	 * @return the filtered list with only two digit numbers
 	 */
 	@Override
 	public int[] filter(int[] list) {

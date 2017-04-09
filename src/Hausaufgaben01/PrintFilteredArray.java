@@ -2,6 +2,9 @@ import java.util.Arrays;
 
 /**
  * Created by Tom on 04.04.2017.
+ * 
+ * Test class for Filter interface and 3 different filter implementations
+ * (Prime, TwoDigits, Unique)
  */
 public class PrintFilteredArray {
 	public static void print(int[] list, Filter filter) {
