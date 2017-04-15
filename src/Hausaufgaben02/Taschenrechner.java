@@ -2,8 +2,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
+/**
+ * Class Taschenrechner interprets UPN expression from the command line. In
+ * those expressions variables can be declared and used in future expression
+ * 
+ * @author C.Wassermann
+ *
+ */
 public class Taschenrechner {
 
+	// HashMap which contains previous entered variables
 	private static HashMap<String, Double> mapVars = new HashMap<>();
 
 	// check if given variable name is allowed
@@ -16,6 +24,11 @@ public class Taschenrechner {
 		return true;
 	}
 
+	/**
+	 * Evaluate an UPN expression and return its result
+	 * @param exprUPN the UPN expressions which is evaluated
+	 * @return result of given UPN expression (is NaN if parsing error occurs)
+	 */
 	private static double eval(String exprUPN) {
 		ArrayList<Double> numberStack = new ArrayList<>();
 		String[] exprParts = exprUPN.split(" +");
@@ -67,6 +80,12 @@ public class Taschenrechner {
 		}
 	}
 
+	/**
+	 * Take given input and interpret variable declarations as well as normal UPN statements.
+	 * Usage of variable declarations: "VarName = UPN expression"
+	 * @param expr expression which is interpreted
+	 * @return result of expression
+	 */
 	public static String analyze(String expr) {
 		if (expr.contains("=")) {
 			String[] exprParts = expr.split("=");
