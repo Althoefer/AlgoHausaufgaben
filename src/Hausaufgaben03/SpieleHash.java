@@ -17,13 +17,13 @@ public class SpieleHash {
 	// returns the index at which the game string should be stored (first hash
 	// function)
 	private int hashIndex(String spiel) {
-		return (Math.abs(spiel.hashCode()) % 100) % size;
+		return Math.abs(spiel.hashCode()) % 100;
 	}
 
 	// returns the increment which is used to find alternate storing positions
 	// if the initial one is occupied (second hash function)
 	private int hashIncrement(String spiel) {
-		return ((Math.abs(spiel.hashCode() / 1000) % 100) % (size - 1)) + 1;
+		return (Math.abs(spiel.hashCode() / 1000) % 100) + 1;
 	}
 
 	/**
