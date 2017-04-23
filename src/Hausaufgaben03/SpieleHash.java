@@ -23,7 +23,7 @@ public class SpieleHash {
 	// returns the increment which is used to find alternate storing positions
 	// if the initial one is occupied (second hash function)
 	private int hashIncrement(String spiel) {
-		return ((Math.abs(spiel.hashCode() / 1000) % 100) % size) + 1;
+		return ((Math.abs(spiel.hashCode() / 1000) % 100) % (size - 1)) + 1;
 	}
 
 	/**
