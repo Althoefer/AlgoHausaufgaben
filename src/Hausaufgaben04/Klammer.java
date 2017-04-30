@@ -1,6 +1,18 @@
-
+/**
+ * Class Klammer gives the ability to check if a String is ebenentreu
+ * 
+ * @author C.Wassermann
+ *
+ */
 public class Klammer {
 
+	/**
+	 * Checks if the given string is ebenentreu
+	 * 
+	 * @param s
+	 *            String which is checked
+	 * @return whether String s is ebenentreu
+	 */
 	public boolean isEbenentreu(String s) {
 		MyDeque stack = new MyDeque();
 		for (char c : s.toCharArray()) {
@@ -32,6 +44,7 @@ public class Klammer {
 		return true;
 	}
 
+	// Test the correctness of the program
 	public static void main(String args[]) {
 		Klammer k = new Klammer();
 		System.out.println("(([[]])) should be true: " + k.isEbenentreu("(([[]]))"));

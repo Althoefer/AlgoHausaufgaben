@@ -1,8 +1,21 @@
-
+/**
+ * Class MyDeque implements a double ended queue with basic insertion and
+ * deletion functionality
+ * 
+ * @author C.Wassermann
+ *
+ */
 public class MyDeque {
+	// pointer to the first and last element in the deque
 	private Node first = null;
 	private Node last = null;
 
+	/**
+	 * Insert a new element at the front of the deque
+	 * 
+	 * @param node
+	 *            which is inserted
+	 */
 	public void addFirst(Node node) {
 		node.prev = null;
 		node.next = this.first;
@@ -12,6 +25,12 @@ public class MyDeque {
 		}
 	}
 
+	/**
+	 * Insert a new element at the end of the deque
+	 * 
+	 * @param node
+	 *            which is inserted
+	 */
 	public void addLast(Node node) {
 		node.prev = this.last;
 		node.next = null;
@@ -21,6 +40,11 @@ public class MyDeque {
 		}
 	}
 
+	/**
+	 * Removes the first element from the deque and returns its content
+	 * 
+	 * @return the content of the element which is removed
+	 */
 	public String removeFirst() {
 		if (first != last && first != null) { // the list has at least 2 nodes
 			String ret = first.content;
@@ -39,6 +63,11 @@ public class MyDeque {
 		return null;
 	}
 
+	/**
+	 * Removes the last element from the deque and returns its content
+	 * 
+	 * @return the content of the element which is removed
+	 */
 	public String removeLast() {
 		if (first != last && last != null) { // the list has at least 2 nodes
 			String ret = last.content;
@@ -58,6 +87,11 @@ public class MyDeque {
 		return null;
 	}
 
+	/**
+	 * Checks if the deque is empty
+	 * 
+	 * @return whether the deque is empty or not
+	 */
 	public boolean isEmpty() {
 		if (first == null && last == null) {
 			return true;
@@ -66,6 +100,9 @@ public class MyDeque {
 		}
 	}
 
+	/**
+	 * Removes all element from the deque
+	 */
 	public void clear() {
 		first = null;
 		last = null;
