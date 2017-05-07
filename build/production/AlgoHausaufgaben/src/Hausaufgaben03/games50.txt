@@ -1,0 +1,50 @@
+1	FIFA 17	EA
+2	Call Of Duty: Infinite Warfare	Activision
+3	Battlefield 1	EA
+4	The Division	Ubisoft
+5	Grand Theft Auto V	Rockstar
+6	Uncharted 4: A Thief's End	Sony
+7	Call Of Duty: Black Ops III	Activision
+8	Watch Dogs 2 	Ubisoft
+9	Overwatch 	Blizzard
+10	Forza Horizon 3 	Microsoft
+11	Mafia III 	2K
+12	The Elder Scrolls V: Skyrim Special Edition 	Bethesda
+13	FIFA 16 	EA
+14	Lego Star Wars: The Force Awakens 	WB Games
+15	Doom 	Bethesda
+16	Lego Marvel's Avengers 	WB Games
+17	Star Wars: Battlefront 	EA
+18	Minecraft: Xbox One and Xbox 360 Editions 	Microsoft
+19	Far Cry Primal 	Ubisoft
+20	Gears Of War 4 	Microsoft
+21	Pokémon Sun 	Nintendo
+22	Fallout 4 	Bethesda
+23	Pokémon Moon 	Nintendo
+24	Final Fantasy XV 	Square Enix
+25	Rocket League 	505 Games
+26	WWE 2K17 	2K
+27	Titanfall 2 	EA
+28	EA Sports UFC 2 	EA
+29	No Man's Sky 	Sony
+30	Dishonored 2 	Bethesda
+31	Rainbow Six Siege 	Ubisoft
+32	Ratchet & Clank 	Sony
+33	Lego Jurassic World 	WB Games
+34	Minecraft: PlayStation 3, 4, and Vita Editions 	Sony
+35	Dark Souls III 	Bandai Namco
+36	Plants Vs. Zombies: Garden Warfare 2 	EA
+37	Rise Of The Tomb Raider: 20 Year Celebration 	Square Enix
+38	Lego Dimensions 	WB Games
+39	Minecraft: Story Mode 	Telltale Games
+40	Just Cause 3 	Square Enix
+41	F1 2016 	Codemasters
+42	WWE 2K16 	2K
+43	Disney Infinity 3.0 	Disney Interactive
+44	Assassin's Creed Syndicate 	Ubisoft
+45	Steep 	Ubisoft
+46	Halo 5: Guardians 	Microsoft
+47	Guitar Hero Live 	Activision
+48	Just Dance 2017 	Ubisoft
+49	Skylanders: Imaginators 	Activision
+50	Deus Ex: Mankind Divided 	Square Enix
