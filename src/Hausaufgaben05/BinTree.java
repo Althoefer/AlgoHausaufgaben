@@ -1,7 +1,3 @@
-package src.Hausaufgaben05;
-
-import sun.reflect.generics.tree.Tree;
-
 /**
  * Created by Tom on 06.05.2017.
  */

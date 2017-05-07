@@ -1,5 +1,3 @@
-package src.Hausaufgaben05;
-
 /**
  * Created by Tom on 06.05.2017.
  */
