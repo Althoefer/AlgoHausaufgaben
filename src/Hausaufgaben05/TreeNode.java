@@ -10,6 +10,8 @@ public class TreeNode {
     public TreeNode(int value, TreeNode parent){
         this.value = value;
         this.parent = parent;
-        this.right = this.left = null;
+        this.right = null;
+        this.left = null;
     }
+
 }
