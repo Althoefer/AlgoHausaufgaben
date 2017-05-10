@@ -107,7 +107,6 @@ public class BTree {
         String statusOfInsertion = "";
         for(int x : toInsert){
             statusOfInsertion += btree.insert(x);
-            System.out.println(statusOfInsertion);
         }
         System.out.println("Das Einfuegen in den Baum hat richtig funktioniert: " + solution.equals(statusOfInsertion));
         System.out.println(btree.search(26)); //true
