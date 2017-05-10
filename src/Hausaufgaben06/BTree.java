@@ -57,7 +57,7 @@ public class BTree {
             node.children.add(newNodeR);
             newNodeR.parent = node;
             root = node;
-            return 1;
+            return 2;
         }
         int pos = 0;
         for(int value : node.values){
@@ -68,26 +68,34 @@ public class BTree {
             if(value > x)break;
         }
         node.values.add(pos, x);
+        if(node.children != null) {
+            node.children.remove(pos);
+            node.children.add(pos, newNodeR);
+            node.children.add(pos, newNodeL);
+        }
         if(node.values.size() > 2*d){
             int mid = node.values.get(d);
             newNodeL = new BTreeNode();
             newNodeL.values = new ArrayList<>();
             newNodeL.values.addAll(node.values.subList(0, d));
+            newNodeL.parent = node.parent;
             if(node.children != null) {
                 newNodeL.children = new ArrayList<>();
                 newNodeL.children.addAll(node.children.subList(0, d));
-                newNodeL.parent = node.parent;
             }
             newNodeR = new BTreeNode();
             newNodeR.values = new ArrayList<>();
             newNodeR.values.addAll(node.values.subList(d+1, node.values.size()));
+            newNodeR.parent = node.parent;
             if(node.children != null) {
                 newNodeR.children = new ArrayList<>();
                 newNodeR.children.addAll(node.children.subList(d+1, node.children.size()));
-                newNodeR.parent = node.parent;
             }
-            return insertIntoNode(mid, node.parent)+1;
+            int ret = insertIntoNode(mid, node.parent);
+            if(ret == 2 )return 2;
+            return 1;
         }else{
+
             return 0;
         }
     }
