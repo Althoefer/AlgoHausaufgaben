@@ -1,12 +1,13 @@
-package src.Hausaufgaben06;
-
 import java.util.ArrayList;
 
 /**
+ * Class BTreeNode represents one node in a BTree
  * Created by Manuel on 09.05.2017.
  */
 public class BTreeNode {
-    ArrayList<Integer> values;
-    ArrayList<BTreeNode> children;
-    BTreeNode parent;
+	// lists of value and children
+	ArrayList<Integer> values;
+	ArrayList<BTreeNode> children;
+	// unique parent node
+	BTreeNode parent;
 }
