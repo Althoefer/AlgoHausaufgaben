@@ -2,6 +2,7 @@ package Blatt08;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 /**
  * Created by tom on 23.05.17.
@@ -11,7 +12,7 @@ public class Graph {
 
     public Graph(int v){
         this.graph = new ArrayList[v];
-        for(int i=0; i<v; i++){
+        for(int i=0; i<=v; i++){
             graph[i] = new ArrayList<Integer>(0);
         }
     }
@@ -54,14 +55,51 @@ public class Graph {
         return ret + "]";
     }
 
+    private ArrayList<Integer> dfs;
+
+    private void dfsRek(int node){
+
+        ArrayList<Integer> nodes = graph[node];
+        Collections.sort(nodes);
+        dfs.add(node);
+        for(int i = 0; i < nodes.size() ;i++){
+            if(!dfs.contains(nodes.get(i))){
+                dfsRek(nodes.get(i));
+            }
+        }
+
+
+    }
+
+    public ArrayList<Integer> dfs(int start){
+        dfs = new ArrayList<>();
+        dfsRek(start);
+        return dfs;
+    }
+
+    public ArrayList<Integer> bfs(int start){
+        ArrayList<Integer> ret = new ArrayList<>();
+        ArrayList<Integer> nodes = new ArrayList<>();
+        nodes.add(start);
+        while(nodes.size() > 0){
+            ArrayList<Integer> newNodes = new ArrayList<>();
+            for(Integer i : nodes){
+                if(!ret.contains(i)){
+                    ret.add(i);
+                    newNodes.addAll(graph[i]);
+                }
+            }
+            Collections.sort(newNodes);
+            nodes = newNodes;
+        }
+
+        return ret;
+    }
+
     public static void main(String[] args) {
-        int[] vList = {6,10,1,5,1,4,2,3,2,6,3,4,3,5,4,5,4,6,5,6,6,4};
+        int[] vList = {6,10,1,5,1,4,2,3,2,6,3,4,3,5,4,5,4,2,5,6,6,1};
         Graph g = new Graph(vList);
-        System.out.println(g);
-        g.addEdge(5, 1);
-        System.out.println(g);
-        System.out.println("VertexCount:    " + g.getVertexCount());
-        System.out.println("EdgeCount:      " + g.getEdgeCount());
-        System.out.println("getAdjacent(1): " + g.getAdjacent(1));
+        System.out.println(g.dfs(1));
+        System.out.println(g.bfs(1));
     }
 }
