@@ -1,15 +1,18 @@
 /**
+ * Class Damenproblem gives the ability to solve a "Damenproblem"
+ * by applying a backtracking algorithm
+ * 
  * Created by tom on 03.06.17.
  */
 
 public class Damenproblem {
 
 	/**
-	 * Searches all solutions for the famous "Damenproblem" The problem: you
-	 * want to place n queens on a chess board of the size n*n The solution:
-	 * backtracking!
+	 * Searches all solutions for the famous "Damenproblem"
+	 * The problem: you want to place n queens on a chess board of the size n*n
+	 * The solution: backtracking!
 	 *
-	 * Initializes a empty chess board and starts the main logic with
+	 * Initializes an empty chess board and starts the main logic with
 	 * backtracking
 	 * 
 	 * @param brettgroesse
@@ -108,6 +111,6 @@ public class Damenproblem {
 
 	public static void main(String[] args) {
 		Damenproblem d = new Damenproblem();
-		d.damenProblem(5);
+		d.damenProblem(6);
 	}
 }
