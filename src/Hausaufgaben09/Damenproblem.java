@@ -1,4 +1,4 @@
-package Blatt09;
+package Hausaufgaben09;
 
 import java.util.Arrays;
 
@@ -76,7 +76,7 @@ public class Damenproblem{
         int j = spalte;
         //check if there is a queen in the upper left diagonal
         for (; i >= 0 && j >= 0; i--, j--){
-            if (brett[i][j] != 0) {
+            if (brett[j][i] != 0) {
                 return false;
             }
         }
@@ -84,7 +84,7 @@ public class Damenproblem{
         j = spalte;
         //check for a queen in the lower left diagonal
         for (; i<brett.length && j >= 0; i++, j--){
-            if (brett[i][j] != 0) {
+            if (brett[j][i] != 0) {
                 return false;
             }
         }
@@ -107,6 +107,6 @@ public class Damenproblem{
 
     public static void main(String[] args) {
         Damenproblem d = new Damenproblem();
-        d.damenProblem(4);
+        d.damenProblem(5);
     }
 }
