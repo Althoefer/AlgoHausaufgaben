@@ -1,4 +1,9 @@
-
+/**
+ * TestClass for Dijkstra's shortest path algorithm
+ * 
+ * @author C.Wassermann
+ *
+ */
 public class TestDijkstra {
 
 	public static void main(String[] args) {

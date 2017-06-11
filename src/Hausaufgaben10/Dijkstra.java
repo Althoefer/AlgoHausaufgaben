@@ -2,8 +2,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.PriorityQueue;
 
+/**
+ * Class Dijkstra provides the functionality to find the shortest path in a
+ * given graph by applying the Dijkstra algorithm to it
+ * 
+ * @author C.Wassermann
+ *
+ */
 public class Dijkstra {
 
+	/**
+	 * Prints every iteration step of Dijkstra's shortest path algorithm
+	 * 
+	 * @param edges
+	 *            a list which contains a description of the graph to solve in
+	 *            the form: edges[0] = number of nodes in the Graph; one tuples
+	 *            of three values per edge: from Node, to Node, edge weight
+	 */
 	public static void printDijkstra(int[] edges) {
 		List<DNode> graph = new ArrayList<>();
 		parseGraph(edges, graph);
@@ -13,10 +28,11 @@ public class Dijkstra {
 		executeDijkstra(graph, pq);
 	}
 
+	// parses the graph input array into a list with fitting nodes
 	private static void parseGraph(int[] edges, List<DNode> graph) {
 		int numNodes = edges[0];
 		int numEdges = (edges.length - 1) / 3;
-		graph.add(null);
+		graph.add(null); // dummy element
 		for (int i = 1; i <= numNodes; ++i) {
 			graph.add(new DNode(i));
 		}
@@ -28,6 +44,7 @@ public class Dijkstra {
 		}
 	}
 
+	// alter the start node's attributes to setup for Dijkstra algorithm
 	private static void setStart(int start, List<DNode> graph, PriorityQueue<DNode> pq) {
 		DNode startNode = graph.get(start);
 		startNode.distance = 0;
@@ -35,7 +52,9 @@ public class Dijkstra {
 		pq.add(startNode);
 	}
 
+	// execute Dijkstra's shortest Path algorithm
 	private static void executeDijkstra(List<DNode> graph, PriorityQueue<DNode> pq) {
+		// retrieve the start node
 		int start = pq.peek().id;
 		outputHeader(start, graph);
 		while (!pq.isEmpty()) {
@@ -57,6 +76,7 @@ public class Dijkstra {
 		}
 	}
 
+	// output iteration header
 	private static void outputHeader(int start, List<DNode> graph) {
 		System.out.print("vi|");
 		for (int rep = 0; rep < 2; ++rep) {
@@ -74,6 +94,7 @@ public class Dijkstra {
 		System.out.println();
 	}
 
+	// output the current status in Dijkstra algorithm
 	private static void outputStatus(int start, int current, List<DNode> graph) {
 		System.out.printf("%2d|", current);
 		for (int i = 1; i < graph.size(); ++i) {
