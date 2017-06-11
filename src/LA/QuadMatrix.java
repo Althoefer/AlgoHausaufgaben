@@ -1,4 +1,4 @@
-package src.LA;
+package LA;
 
 import javax.swing.*;
 import java.util.Arrays;
@@ -151,7 +151,46 @@ public class QuadMatrix{
         return new QuadMatrix(random);
     }
 
+    public double[] loeseLGS(double[] b){
+        //check for dimensions
+        if(b.length != a.length){
+            throw new IllegalArgumentException("Dimension of b[] does not match the dimension of a[][]!");
+        }
+        double detA = det_laplace(a);
+
+        double[] x = new double[b.length];              //solution
+        double[][] a1 = new double[a.length][a.length]; //copy of a[][]
+
+        for(int i=0; i<a.length; i++){  //make a working copy of a
+            System.arraycopy(a[i], 0, a1[i], 0, b.length);
+        }
+
+        for(int i=0; i<a.length; i++){
+            //copy b into the column at i
+            for(int j=0; j<a.length; j++){
+                a1[i][j] = b[j];
+            }
+            x[i] = det_laplace(a1) / detA;
+            //make it a copy of a[][] again, dont want to write a extra method
+            for(int j=0; j<a.length; j++){
+                a1[i][j] = a[i][j];
+            }
+        }
+        return x;
+    }
+
     public static void main(String args[]){
+        double[][] testA = {{-1, 0, -2},{4, 1, 0},{2, 0 ,1}};
+        QuadMatrix a = new QuadMatrix(testA);
+        double[] testB = {9,2,2};
+        System.out.println(Arrays.toString(a.loeseLGS(testB)));
+    }
+
+
+
+
+
+    public static void test_laplace(){
         double[][] a = {{5, -3, 4}, {-1, 2, 0}, {-6, 3 ,1}};
         QuadMatrix A = new QuadMatrix(a);
 
@@ -206,12 +245,6 @@ public class QuadMatrix{
         System.out.println("n=12: " + (timeEnd - timeStart));
 
     }
-
-
-
-
-
-
 
 
 
