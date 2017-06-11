@@ -29,13 +29,16 @@ public class Dijkstra {
 	}
 
 	// parses the graph input array into a list with fitting nodes
+	// assumes that edges is a correctly formatted input array
 	private static void parseGraph(int[] edges, List<DNode> graph) {
 		int numNodes = edges[0];
 		int numEdges = (edges.length - 1) / 3;
 		graph.add(null); // dummy element
+		// initialize every node in the graph
 		for (int i = 1; i <= numNodes; ++i) {
 			graph.add(new DNode(i));
 		}
+		// add edges to starting nodes
 		for (int i = 0; i < numEdges; ++i) {
 			int from = edges[1 + i * 3];
 			int to = edges[1 + i * 3 + 1];
@@ -57,6 +60,7 @@ public class Dijkstra {
 		// retrieve the start node
 		int start = pq.peek().id;
 		outputHeader(start, graph);
+		// main Dijkstra loop
 		while (!pq.isEmpty()) {
 			DNode currentNode = pq.poll();
 			if (currentNode.visited) {
@@ -65,8 +69,9 @@ public class Dijkstra {
 			currentNode.visited = true;
 			for (Edge e : currentNode.edges) {
 				DNode destination = graph.get(e.to);
+				// check if new shortest path was found and adjust attributes
+				// accordingly
 				if (destination.distance > currentNode.distance + e.weight) {
-					// new shortest Path
 					destination.distance = currentNode.distance + e.weight;
 					destination.route = currentNode;
 					pq.add(destination);
@@ -96,7 +101,9 @@ public class Dijkstra {
 
 	// output the current status in Dijkstra algorithm
 	private static void outputStatus(int start, int current, List<DNode> graph) {
+		// vi
 		System.out.printf("%2d|", current);
+		// shortest found path
 		for (int i = 1; i < graph.size(); ++i) {
 			if (graph.get(i).id != start) {
 				System.out.printf(" %2s",
@@ -104,6 +111,7 @@ public class Dijkstra {
 			}
 		}
 		System.out.print("|");
+		// previous nodes on the shortest path from start
 		for (int i = 1; i < graph.size(); ++i) {
 			if (graph.get(i).id != start) {
 				System.out.printf(" %2s", graph.get(i).route == null ? "--" : "" + graph.get(i).route.id);
