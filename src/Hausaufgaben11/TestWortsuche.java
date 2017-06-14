@@ -1,3 +1,10 @@
+/**
+ * TestClass for Wortsuche which searches through a given text an performs
+ * pattern matching with the Boyer-Moore-Sunday algorithm
+ * 
+ * @author C.Wassermann
+ *
+ */
 public class TestWortsuche {
 
 	public static void main(String[] args) {
