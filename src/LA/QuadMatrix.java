@@ -1,5 +1,3 @@
-package src.LA;
-
 import javax.swing.*;
 import java.util.Arrays;
 
@@ -182,8 +180,8 @@ public class QuadMatrix{
 
     public QuadMatrix transponiert(){
         QuadMatrix ret = new QuadMatrix(this);
-        for(int i=0; i<ret.getDim(); i++){
-            for(int j=0; j<ret.getDim(); j++){
+        for(int i=0; i<a.length; i++){
+            for(int j=0; j<a.length; j++){
                 ret.a[j][i] = this.a[i][j];
             }
         }
@@ -206,12 +204,14 @@ public class QuadMatrix{
 
     public boolean isOrthogonalMatrix(){
         QuadMatrix c = this.matrixMult(this.transponiert());
+        double faktor = c.a[0][0];
+        //eigentlich sollte man jetzt durch diesen Faktor teilen, ich habe aber angst vor Bruechen
         for(int i=0; i<this.getDim(); i++){
             for(int j=0; j<this.getDim(); j++){
-                if(i == j && c.a[i][j] == 1){
-
+                if(i == j && c.a[i][j] == faktor) {
+                    continue;
                 } else if(i != j && c.a[i][j] == 0){
-
+                    continue;
                 } else{
                     return false;
                 }
@@ -226,11 +226,8 @@ public class QuadMatrix{
         QuadMatrix a = new QuadMatrix(testA);
         QuadMatrix b = new QuadMatrix(testB);
         //kein multiplizieren, da für die Orthogonalität irrelevant und nervig!!!
-
-        System.out.println("Matrix A: " + a);
-        System.out.println("A transp: " + a.transponiert());
-        System.out.println("A ist orthogonal?" + a.isOrthogonalMatrix());
-        System.out.println("B ist orthogonal?" + b.isOrthogonalMatrix());
+        System.out.println("A ist orthogonal? " + a.isOrthogonalMatrix());
+        System.out.println("B ist orthogonal? " + b.isOrthogonalMatrix());
 }
 
 
