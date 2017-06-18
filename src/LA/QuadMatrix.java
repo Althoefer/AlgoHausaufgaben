@@ -1,4 +1,4 @@
-package LA;
+package src.LA;
 
 import javax.swing.*;
 import java.util.Arrays;
@@ -151,7 +151,8 @@ public class QuadMatrix{
         return new QuadMatrix(random);
     }
 
-    public double[] loeseLGS(double[] b){
+
+    private double[] loeseLGS(double[] b){
         //check for dimensions
         if(b.length != a.length){
             throw new IllegalArgumentException("Dimension of b[] does not match the dimension of a[][]!");
@@ -179,16 +180,67 @@ public class QuadMatrix{
         return x;
     }
 
+    public QuadMatrix transponiert(){
+        QuadMatrix ret = new QuadMatrix(this);
+        for(int i=0; i<ret.getDim(); i++){
+            for(int j=0; j<ret.getDim(); j++){
+                ret.a[j][i] = this.a[i][j];
+            }
+        }
+        return ret;
+    }
+
+    public QuadMatrix matrixMult(QuadMatrix b){
+        QuadMatrix ret = new QuadMatrix(this);
+        for(int i=0; i<b.getDim(); i++){
+            for(int j=0; j<b.getDim(); j++){
+                double temp = 0;
+                for(int k=0; k<b.getDim(); k++){
+                    temp += a[k][i] * b.a[j][k];
+                }
+                ret.a[i][j] = temp;
+            }
+        }
+        return ret;
+    }
+
+    public boolean isOrthogonalMatrix(){
+        QuadMatrix c = this.matrixMult(this.transponiert());
+        for(int i=0; i<this.getDim(); i++){
+            for(int j=0; j<this.getDim(); j++){
+                if(i == j && c.a[i][j] == 1){
+
+                } else if(i != j && c.a[i][j] == 0){
+
+                } else{
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
     public static void main(String args[]){
+        double[][] testA = {{1,2,2},{2,1,-2},{2,-2,1}};
+        double[][] testB = {{3,3,2},{2,-6,6},{6,2,-3}};
+        QuadMatrix a = new QuadMatrix(testA);
+        QuadMatrix b = new QuadMatrix(testB);
+        //kein multiplizieren, da für die Orthogonalität irrelevant und nervig!!!
+
+        System.out.println("Matrix A: " + a);
+        System.out.println("A transp: " + a.transponiert());
+        System.out.println("A ist orthogonal?" + a.isOrthogonalMatrix());
+        System.out.println("B ist orthogonal?" + b.isOrthogonalMatrix());
+}
+
+
+
+    public static void test_loeselgs(){
         double[][] testA = {{-1, 0, -2},{4, 1, 0},{2, 0 ,1}};
         QuadMatrix a = new QuadMatrix(testA);
         double[] testB = {9,2,2};
         System.out.println(Arrays.toString(a.loeseLGS(testB)));
     }
-
-
-
-
 
     public static void test_laplace(){
         double[][] a = {{5, -3, 4}, {-1, 2, 0}, {-6, 3 ,1}};
