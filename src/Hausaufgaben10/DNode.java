@@ -1,3 +1,4 @@
+package src.Hausaufgaben10;
 
 /**
  * Class DNode (short for DijkstraNode) represents a Node which can be used in

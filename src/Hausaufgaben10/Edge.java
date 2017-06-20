@@ -1,3 +1,6 @@
+package src.Hausaufgaben10;
+
+
 /**
  * Class Edge represents a directed, weighted edge in a graph
  * 

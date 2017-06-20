@@ -19,8 +19,12 @@ public class Textsuche {
             for (int j = 0; j < pattern.length(); j++) {
                 if (patternPos >= text.length()) break;
                 if (isMasked) {
-                    if (pattern.charAt(j) == text.charAt(patternPos))
+                    if (pattern.charAt(j) == text.charAt(patternPos)) {
+                        patternPos++;
                         isMasked = false;
+                    }else{
+                        continue text;
+                    }
                 } else if (isGroup) {
                     if (pattern.charAt(j) == ']') {
                         isMasked = false;

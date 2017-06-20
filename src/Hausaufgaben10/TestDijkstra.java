@@ -1,3 +1,4 @@
+package src.Hausaufgaben10;
 /**
  * TestClass for Dijkstra's shortest path algorithm
  * 
