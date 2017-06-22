@@ -7,6 +7,13 @@ import java.util.ArrayList;
  */
 public class Textsuche {
 
+
+    /**Diese Funktion gibt eine ArrayList mit Positionen zurueck, an denen das Pattern im Text gefunden wurde
+     *
+     * @param text Text, der durchsucht wird
+     * @param pattern Pattern, nach dem gesucht wird
+     * @return Liste mit Positionen, an denen das Pattern zu finden ist.
+     */
     public static ArrayList<Integer> textSearch(String text, String pattern) {
         ArrayList<Integer> ret = new ArrayList<>();
 
@@ -16,7 +23,8 @@ public class Textsuche {
             boolean isGroup = false;
             ArrayList<Character> group = new ArrayList<>();
             int patternPos = i;
-            for (int j = 0; j < pattern.length(); j++) {
+            int j;
+            for (j = 0; j < pattern.length(); j++) {
                 if (patternPos >= text.length()) break;
                 if (isMasked) {
                     if (pattern.charAt(j) == text.charAt(patternPos)) {
@@ -27,7 +35,19 @@ public class Textsuche {
                     }
                 } else if (isGroup) {
                     if (pattern.charAt(j) == ']') {
-                        isMasked = false;
+                        boolean found = false;
+                        for(char c : group){
+                            if(c == text.charAt(patternPos)){
+                                found = true;
+                            }
+                        }
+                        isGroup = false;
+                        group.clear();
+                        if(found){
+                            patternPos++;
+                        }else{
+                            continue text;
+                        }
                     } else {
                         group.add(pattern.charAt(j));
                     }
@@ -37,15 +57,8 @@ public class Textsuche {
                         isMasked = true;
                     } else if (pattern.charAt(j) == '.') {
                         patternPos++;
-                    }else if(group.size() > 0){
-                        for(char  c: group){
-                            if(c == text.charAt(patternPos)){
-                                group.clear();
-                                continue;
-                            }
-                        }
-                        group.clear();
-                        continue text;
+                    }else if(pattern.charAt(j) == '['){
+                       isGroup= true;
                     }
                     else {
                         if(pattern.charAt(j) == text.charAt(patternPos)) {
@@ -57,7 +70,7 @@ public class Textsuche {
 
                 }
             }
-            ret.add(i);
+            if(j == pattern.length())ret.add(i);
         }
 
 
